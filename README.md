@@ -80,11 +80,3 @@ git push origin <assignment-name>/<your-name>
 The Pull Request creation time is considered your submission time
 You may push updates before the deadline
 Do not force-push or delete your branch
-
-## ✅ Submission Checklist
-
-Before the deadline, confirm:
-- Code is on your branch
-- All changes are committed and pushed
-- Pull Request is open to main
-- Code runs without errors
