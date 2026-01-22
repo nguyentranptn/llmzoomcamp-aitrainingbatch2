@@ -1,0 +1,14 @@
+torch
+transformers
+langchain
+langchain-community
+sentence-transformers
+datasets
+tqdm
+pandas
+openpyxl
+openai
+ragatouille
+python-dotenv
+faiss-cpu
+plotly
