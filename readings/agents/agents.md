@@ -6,7 +6,17 @@
     - [What is a MRKL System?](#what-is-a-mrkl-system)
     - [Examples of MRKL Systems](#examples-of-mrkl-systems)
     - [Components](#components)
-    - [Model](#model)
+  - [LLMs that Reason and Act](#llms-that-reason-and-act)
+    - [What is ReAct?](#what-is-react)
+    - [Reinforcement Learning](#reinforcement-learning)
+    - [Question](#question)
+  - [Agentic RAG](#agentic-rag)
+    - [Architecture of Agentic RAG](#architecture-of-agentic-rag)
+      - [Single-Agent RAG](#single-agent-rag)
+      - [Multi-Agent RAG](#multi-agent-rag)
+    - [AI Agentic Orchestration](#ai-agentic-orchestration)
+    - [Working of Agentic RAG](#working-of-agentic-rag)
+    - [Agent Frameworks for Agentic RAG](#agent-frameworks-for-agentic-rag)
 
 ## What is AI Agent?
 
@@ -67,6 +77,88 @@ Below is the workflow of this process, taken from LangChain:
 
 ![Agent Workflow](agent-workflow.png)
 
-### Model
+## LLMs that Reason and Act
 
-The model is the reasoning engine of your agent. In LangChain can be specified in multiple ways, supporting both static and dynamic model selection.
+ReAct Systems enhance MRKL frameworks by combining reasoning with actions, enabling LLMs to improve complex task performance through iterative thought-action loops.
+
+### What is ReAct?
+
+[ReAct (Reason and Act)](https://arxiv.org/abs/2210.03629) is a prompting technique that enables Large Language Models (LLMs) to solve complex tasks through natural language reasoning and actions. It allows an LLM to perform certain actions, such as retrieving external information, and then reason based on the retrieved data.
+
+ReAct systems extend Modular Reasoning, Knowledge, and Language (MRKL) systems by adding the ability to reason about the actions they can perform.
+
+Below is an example of [Hotpot2](https://arxiv.org/abs/1809.09600): a question-answering dataset requiring complex reasoning. ReAct allows the LLM to reason about the question (Thought 1), take actions (e.g., querying Google) (Act 1). It then receives an observation (Obs 1) and continues the thought-action loop until reaching a conclusion (Act 3).
+
+![react](react.png)
+
+This paradigm can be recognized as the same as Reinforcement Learning - however, they are not the same.
+
+### Reinforcement Learning
+
+Reinforcement Learning revolves around the idea that an agent (the learner or decision-maker) interacts with an environment to achieve a goal. The agent performs actions and receives feedback to optimize its decision-making over time.
+
+![reinforcement-learning](reinforcement-learning.png)
+
+- Agent: The decision-maker that performs actions.
+- Environment: The world or system in which the agent operates.
+- State: The situation or condition the agent is currently in.
+- Action: The possible moves or decisions the agent can make.
+- Reward: The feedback or result from the environment based on the agent’s action.
+
+**Core Components:**
+
+1. Policy: Rules that define the agent's behaviors.
+2. Reward Signal: Guides the agent by providing feedback (positive/negative rewards).
+3. Value Function: Evaluates long-term benefits, not just immediate rewards.
+4. Model: Simulates the environment to predict outcomes of actions - enabling planning and foresight.
+
+**Process**
+The agent interacts iteratively with its environment in a feedback loop:
+
+- The agent observes the current state of the environment.
+- It chooses and performs an action based on its policy.
+- The environment responds by transitioning to a new state and providing a reward (or penalty).
+- The agent updates its knowledge (policy, value function) based on the reward received and the new state.
+- This cycle repeats with the agent balancing exploration (trying new actions) and exploitation (using known good actions) to maximize the cumulative reward over time.
+
+The process of a reinforcement learning is mathematically framed as a [Markov Decision Process (MDP)](https://www.geeksforgeeks.org/machine-learning/markov-decision-process/) where future states depend only on the current state and action, not on the prior sequence of events.
+
+### Question
+
+1. Then, what is the difference btween LLM ReAct and Reinforcement Learning?
+2. What is the different between RAG and Agent?
+
+## Agentic RAG
+
+Agentic RAG is an advanced version of Retrieval-Augmented Generation (RAG) where an AI agent retrieves external information and autonomously decides how to use that data. In traditional RAG, the system retrieves information and generates output in one continuous process but Agentic RAG introduces autonomous decision-making.
+
+### Architecture of Agentic RAG
+
+#### Single-Agent RAG
+
+Single-Agent RAG uses a single intelligent agent that routes each user query to the most appropriate data source or tool.
+
+![single-agent-rag](single-agent-rag.png)
+
+#### Multi-Agent RAG
+
+Multi-agent RAG involves a master agent coordinating multiple specialized sub-agents, each interacting with specific data sources or tools. It enables parallel processing of complex queries by dividing them into sub-tasks.
+
+![multi-agent-rag](multi-agent-rag.png)
+
+### AI Agentic Orchestration
+
+AI orchestration manages and automates various AI components—like machine learning models, data pipelines and APIs—to help ensure that they work together efficiently within a system. AI agent orchestration is a subset of AI orchestration that focuses specifically on coordinating autonomous AI agents to help multiple agents to cooperate seamlessly.
+
+### Working of Agentic RAG
+
+Here's a breakdown of how Agentic RAG functions:
+![agentic-rag-workflow](agentic-rag-workflow.png)
+
+What is the main different between Traditional RAG and Agentic RAG?
+
+### Agent Frameworks for Agentic RAG
+
+1. LangChain: is designed to simplify the integration of AI agents into Agentic RAG systems
+2. LlamaIndex (formerly known as GPT Index): helps in the integration of large language models with external data sources which creates efficient interfaces for retrieval-augmented generation tasks
+3. LangGraph: is an orchestration framework designed for developing Agentic RAG
