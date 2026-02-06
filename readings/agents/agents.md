@@ -153,6 +153,7 @@ AI orchestration manages and automates various AI components—like machine lear
 ### Working of Agentic RAG
 
 Here's a breakdown of how Agentic RAG functions:
+
 ![agentic-rag-workflow](agentic-rag-workflow.png)
 
 What is the main different between Traditional RAG and Agentic RAG?
